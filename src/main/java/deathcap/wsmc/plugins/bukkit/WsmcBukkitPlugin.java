@@ -31,10 +31,10 @@ public class WsmcBukkitPlugin extends JavaPlugin implements Listener, CommandExe
 
         boolean verbose = false;
         String wsAddress = "";
-        int wsPort = 24444;
+        int wsPort = 8000;
         String externalScheme = "http";
         String externalDomain = "";
-        int externalPort = 24444;
+        int externalPort = 8000;
         String mcAddress = "localhost";
         int mcPort = Bukkit.getServer().getPort();
         boolean allowAnonymous = false;

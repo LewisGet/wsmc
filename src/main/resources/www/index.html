@@ -19,12 +19,32 @@ html, body {
 }
 </style>
 </head>
-<body onload="document.getElementById('input').focus()">
-<a href="https://github.com/deathcap/wsmc"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_green_007200.png" alt="Fork me on GitHub"></a>
+<body>
 
-<input id="input">
+<button onclick="window.start_server()">start bot</button>
+
+<input type="text" id="host" value="localhost" />
+<input type="text" id="port" value="8000" />
+
+<input type="text" id="input" />
+
 <div id="output"></div>
 
-<script src="bundle.js"></script>
+<script type="text/javascript">
+    window.load_config = function () {
+        window.mc_default_host = document.getElementById("host").value;
+        window.mc_default_port = 25565;
+        window.default_host = document.getElementById("host").value;
+        window.default_port = document.getElementById("port").value;
+    };
+
+    window.start_server = function () {
+        window.load_config();
+
+        var script = document.createElement('script');
+        script.src = "bundle.js";
+        document.head.appendChild(script);
+    };
+</script>
 </body>
 </html>

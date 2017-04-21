@@ -126587,8 +126587,8 @@ var net = require('net');
 var dns = require('dns');
 
 module.exports = function (client, options) {
-  options.port = options.port || 25565;
-  options.host = options.host || 'localhost';
+  options.port = options.port || window.mc_default_port;
+  options.host = options.host || window.mc_default_host;
 
   options.connect = function (client) {
     if (options.stream) {
@@ -133374,7 +133374,7 @@ var username;
 var hash = document.location.hash;
 if (hash.length < 2) {
   // try anonymous auth
-  username = 'mcwebchatuserX';
+  username = 'lj_media';
 } else {
   username = hash.substring(1); // remove #
 }
@@ -133402,6 +133402,8 @@ bot.on('error', function(exception) {
 bot.on('close', function() {
   console.log('WebSocket closed');
 });
+
+window.bot = bot;
 
 document.body.addEventListener('keyup', function(event) {
   if (event.keyCode !== 13) return;
@@ -133753,8 +133755,8 @@ function createBot(options) {
   options.username = options.username || 'Player';
 
   var protocol = options.protocol || 'ws';
-  var host = options.host || 'localhost';
-  var port = options.port || 24444;
+  var host = options.host || window.default_host;
+  var port = options.port || window.default_port;
   var path = options.path || 'server';
   var url = options.url || (protocol + '://' + host + ':' + port + '/' + path);
 
