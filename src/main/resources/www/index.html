@@ -26,6 +26,15 @@ html, body {
 <input type="text" id="host" value="localhost" />
 <input type="text" id="port" value="8000" />
 
+<div>
+    <button onclick="add_button()">Add button</button>
+    button name : <input type="text" id="button_alias" value="name" />
+    content : <input type="text" id="button_content" value="hello" />
+</div>
+
+<div id="quick_button">
+</div>
+
 <input type="text" id="input" />
 
 <div id="output"></div>
@@ -44,6 +53,25 @@ html, body {
         var script = document.createElement('script');
         script.src = "bundle.js";
         document.head.appendChild(script);
+    };
+
+    window.add_button = function () {
+        var container = document.getElementById("quick_button");
+
+        var alias = document.getElementById("button_alias").value;
+        var content = document.getElementById("button_content").value;
+
+        var button = document.createElement('button');
+
+        button.onclick = function () {
+            window.bot.chat(this.getAttribute("content"));
+        };
+
+        button.setAttribute("content", content);
+
+        button.innerText = alias;
+
+        container.appendChild(button);
     };
 </script>
 </body>
